@@ -1,0 +1,140 @@
+import { fetchProducts } from '../lib/mocks/products';
+import { fetchAds } from '../lib/mocks/ads';
+import { fetchNews } from '../lib/mocks/news';
+import { fetchTenders } from '../lib/mocks/tenders';
+import { fetchSpecialists } from '../lib/mocks/clinic';
+import { fetchOrganizations } from '../lib/mocks/organizations';
+import { fetchArticles } from '../lib/mocks/magazine';
+
+export default async function Sitemap() {
+  const products = await fetchProducts();
+  const ads = await fetchAds();
+  const news = await fetchNews();
+  const tenders = await fetchTenders();
+  const specialists = await fetchSpecialists();
+  const organizations = await fetchOrganizations();
+  const articles = await fetchArticles();
+
+  const staticPages = [
+    {
+      url: 'https://bariteco.ir',
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    {
+      url: 'https://bariteco.ir/about',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://bariteco.ir/contact',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://bariteco.ir/rules',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://bariteco.ir/team',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://bariteco.ir/clinic',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://bariteco.ir/clinic/specialists',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://bariteco.ir/clinic/booking',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://bariteco.ir/organize',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://bariteco.ir/magazine',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+  ];
+
+  const productPages = products.map((product) => ({
+    url: `https://bariteco.ir/${product.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  }));
+
+  const adPages = ads.map((ad) => ({
+    url: `https://bariteco.ir/${ad.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  const newsPages = news.map((news) => ({
+    url: `https://bariteco.ir/${news.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  const tenderPages = tenders.map((tender) => ({
+    url: `https://bariteco.ir/${tender.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  const specialistPages = specialists.map((specialist) => ({
+    url: `https://bariteco.ir/${specialist.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  const organizationPages = organizations.map((org) => ({
+    url: `https://bariteco.ir/${org.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  const articlePages = articles.map((article) => ({
+    url: `https://bariteco.ir/${article.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages,
+    ...productPages,
+    ...adPages,
+    ...newsPages,
+    ...tenderPages,
+    ...specialistPages,
+    ...organizationPages,
+    ...articlePages,
+  ];
+}

@@ -1,0 +1,46 @@
+/* /app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* استایل‌های عمومی */
+body {
+  font-family: 'Vazir', sans-serif;
+  direction: rtl;
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* استایل‌های Breadcrumb */
+.breadcrumb {
+  @apply py-4;
+}
+
+.breadcrumb-list {
+  @apply flex gap-2 text-sm text-gray-600 dark:text-gray-300;
+}
+
+.breadcrumb-item {
+  @apply flex items-center;
+}
+
+.breadcrumb-item a {
+  @apply hover:text-primary;
+}
+
+.breadcrumb-item span {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: '/';
+  @apply mx-2 text-gray-400;
+}
+
+
+
+
+
