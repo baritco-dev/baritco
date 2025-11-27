@@ -1,12 +1,12 @@
-// /app/layout.jsx
+// app/layout.jsx
 import './globals.css';
 import { Providers } from '../lib/redux/provider';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MegaMenu from '../components/Menus/MegaMenu';
-import Breadcrumb from '../components/Breadcrumb'; // اضافه کردن Breadcrumb
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FloatingContactButton from '@/components/FloatingContactButton';
 
 export const metadata = {
   title: 'باریتکو',
@@ -15,7 +15,7 @@ export const metadata = {
 
 export const metadataBase = new URL('https://bariteco.ir');
 
-export default async function RootLayout({ children }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <head>
@@ -26,8 +26,12 @@ export default async function RootLayout({ children }) {
         <Providers>
           <Header />
           <MegaMenu />
-          <Breadcrumb /> {/* افزودن Breadcrumb */}
-          {children}
+          
+          {/* Breadcrumb حذف شد — فقط توی صفحات لازم اضافه می‌شه */}
+          
+          <main>{children}</main>
+          
+          <FloatingContactButton />
           <ToastContainer />
           <Footer />
         </Providers>
